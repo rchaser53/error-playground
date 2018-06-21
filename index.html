@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://cdn.ravenjs.com/3.26.2/raven.min.js" crossorigin="anonymous"></script>
+    <script src="ravenConfig.js"></script>
+    <script>
+      Raven.config(ravenConfigUrl).install()
+
+      try {
+          throw new Error(11)
+      } catch(e) {
+          Raven.captureException(e)
+      }
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
+
+
