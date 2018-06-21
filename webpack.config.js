@@ -1,13 +1,13 @@
-
+const express = require('express');
 const path = require('path');
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   mode: 'development',
 	entry: './src/index.ts',
 	output: {
 		path: path.join(__dirname, 'dist'),
-		filename: 'bundle.js'
+    filename: 'bundle.js',
 	},
 	resolve: {
     symlinks: false,
@@ -56,9 +56,11 @@ module.exports = {
 		historyApiFallback: {
 			rewrites: [{ from: /vee\$/, to: '/vee' }, { from: /element\$/, to: '/element' }]
 		},
-		// open: true,
 		port: 3000,
-		host: "localhost",
+    host: "localhost",
+    before(app) {
+      console.log(11)
+    }
 	},
   devtool: 'inline-source-map',
   plugins: [
